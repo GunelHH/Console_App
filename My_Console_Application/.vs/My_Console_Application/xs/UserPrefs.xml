@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{B7A0C7CF-C5FA-4EB4-85CB-7D4A4DE3FA1A}|Default">
+  <MonoDevelop.Ide.ItemProperties.My__Console__Application PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My_Console_Application" expanded="True">
+            <Node name="My_Console_Application" expanded="True">
+              <Node name="Enums" expanded="True">
+                <Node name="Categories.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
