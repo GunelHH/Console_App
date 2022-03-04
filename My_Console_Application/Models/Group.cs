@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using My_Console_Application.Enums;
 
 namespace My_Console_Application.Models
@@ -8,12 +9,12 @@ namespace My_Console_Application.Models
     {
         public string No;
         Categories Category;
-        public bool isOnline;
         public int Limit;
-        public Students[] Student;
+        public List<Students> students;
+        public bool isOnline;
         public static int count=1;
         
-        public Group(string fullname,string groupno,Categories category)
+        public Group(string no,int limit,Categories category)
         {
             switch (category)
             {  
@@ -32,7 +33,20 @@ namespace My_Console_Application.Models
             count++;
             Category = category;
             isOnline = false;
+            Limit = limit;
+
+            if (isOnline)
+            {
+                limit = 15;
+            }
+            else
+            {
+                limit = 10;
+            }
+
+           
         }
+
        
     }
 }

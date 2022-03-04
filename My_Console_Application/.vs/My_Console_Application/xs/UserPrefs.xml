@@ -1,6 +1,12 @@
 ﻿<Properties StartupConfiguration="{B7A0C7CF-C5FA-4EB4-85CB-7D4A4DE3FA1A}|Default">
   <MonoDevelop.Ide.ItemProperties.My__Console__Application PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Enums/Categories.cs">
+    <Files>
+      <File FileName="Interface/ITeachingServices.cs" Line="1" Column="1" />
+      <File FileName="Services/TeachingServices.cs" Line="1" Column="1" />
+      <File FileName="Models/Students.cs" Line="1" Column="1" />
+      <File FileName="Enums/Categories.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -9,6 +15,8 @@
               <Node name="Enums" expanded="True">
                 <Node name="Categories.cs" selected="True" />
               </Node>
+              <Node name="Interface" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>

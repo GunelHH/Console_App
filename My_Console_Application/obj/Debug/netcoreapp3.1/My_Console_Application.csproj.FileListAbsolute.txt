@@ -1,0 +1,13 @@
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/bin/Debug/netcoreapp3.1/My_Console_Application.deps.json
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/bin/Debug/netcoreapp3.1/My_Console_Application.runtimeconfig.json
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/bin/Debug/netcoreapp3.1/My_Console_Application.runtimeconfig.dev.json
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/bin/Debug/netcoreapp3.1/My_Console_Application.dll
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/bin/Debug/netcoreapp3.1/My_Console_Application.pdb
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.csproj.AssemblyReference.cache
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.AssemblyInfoInputs.cache
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.AssemblyInfo.cs
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.csproj.CoreCompileInputs.cache
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.dll
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.pdb
+/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/Debug/netcoreapp3.1/My_Console_Application.genruntimeconfig.cache

@@ -15,6 +15,9 @@ namespace My_Console_Application.Models
             GroupNo = groupno;
             Type = false;
         }
+         
+
+       
        
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/gunelhesenova/Projects/My_Console_Application/My_Console_Application/My_Console_Application.csproj": {}
+    "/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/My_Console_Application.csproj": {}
   },
   "projects": {
-    "/Users/gunelhesenova/Projects/My_Console_Application/My_Console_Application/My_Console_Application.csproj": {
+    "/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/My_Console_Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/gunelhesenova/Projects/My_Console_Application/My_Console_Application/My_Console_Application.csproj",
+        "projectUniqueName": "/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/My_Console_Application.csproj",
         "projectName": "My_Console_Application",
-        "projectPath": "/Users/gunelhesenova/Projects/My_Console_Application/My_Console_Application/My_Console_Application.csproj",
+        "projectPath": "/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/My_Console_Application.csproj",
         "packagesPath": "/Users/gunelhesenova/.nuget/packages/",
-        "outputPath": "/Users/gunelhesenova/Projects/My_Console_Application/My_Console_Application/obj/",
+        "outputPath": "/Users/gunelhesenova/Desktop/My_Console_Application/My_Console_Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/gunelhesenova/.config/NuGet/NuGet.Config"
