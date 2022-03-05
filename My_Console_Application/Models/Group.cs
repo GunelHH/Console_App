@@ -10,11 +10,11 @@ namespace My_Console_Application.Models
         public string No;
         Categories Category;
         public int Limit;
-        public List<Students> students;
+        public List<Students> Students;
         public bool isOnline;
         public static int count=1;
         
-        public Group(string no,int limit,Categories category)
+        public Group(string no,Categories category,bool isOnline)
         {
             switch (category)
             {  
@@ -33,20 +33,9 @@ namespace My_Console_Application.Models
             count++;
             Category = category;
             isOnline = false;
-            Limit = limit;
-
-            if (isOnline)
-            {
-                limit = 15;
-            }
-            else
-            {
-                limit = 10;
-            }
-
            
         }
 
-       
+      
     }
 }

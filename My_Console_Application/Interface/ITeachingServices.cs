@@ -9,16 +9,18 @@ namespace My_Console_Application.Interface
     { 
         public List<Group> Groups { get; }
 
-        public string CreateGroup(string no, int limit, Categories category);
+        public List<Students> student { get; }
 
-        public void ListOfGroup();
+        public string CreateGroup(string no, Categories category,bool isonline);
 
-        public void EditGroups();
+        public void ListOfGroups();
 
-        public void ListofStudentsInGroup();
+        public void EditGroups(string no, string newno);
+
+        public void ListofStudentsInGroup(string no);
 
         public void ListOfAllStudents();
 
-        public void CreateStudent();
+        public void CreateStudent(string fullname, string groupno, bool type);
     }
 }
