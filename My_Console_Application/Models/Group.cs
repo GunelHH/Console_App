@@ -9,15 +9,14 @@ namespace My_Console_Application.Models
     {
         public string No;
         Categories Category;
-        public int Limit;
-        public List<Students> Students;
         public bool isOnline;
-        public static int count=1;
-        
-        public Group(string no,Categories category,bool isOnline)
+        public int Limit;
+        public List<Student> Students;
+        public static int count=100;
+        public Group(Categories category,bool isonline)
         {
             switch (category)
-            {  
+            {
                 case Categories.Programming:
                     No = $"PM-{count}";
                     break;
@@ -32,10 +31,24 @@ namespace My_Console_Application.Models
             }
             count++;
             Category = category;
-            isOnline = false;
-           
-        }
+            isOnline = isonline;
+            if (isOnline)
+            {
+                Limit = 15;
+            }
+            else
+            {
+                Limit = 10;
+            }
 
-      
+        }
+        public override string ToString()
+        {
+            string status = isOnline ? "Yes" : "No";
+            return $"No: {No} ,Category: {Category},Status: {status}";
+        }
+        
+
+
     }
 }
