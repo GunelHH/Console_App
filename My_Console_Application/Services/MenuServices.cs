@@ -22,16 +22,21 @@ namespace My_Console_Application.Services
             int num;
             string Strnum = Console.ReadLine();
             bool Resultnum = int.TryParse(Strnum, out num);
-
             if (Resultnum)
             {
                 switch (num)
                 {  
                     case (int)Categories.Programming:
+                        string No=teachingServices.CreateGroup(Categories.Programming);
+                        Console.WriteLine($"{No} Group successfully created");
                         break;
                     case (int)Categories.Design:
+                        No=teachingServices.CreateGroup(Categories.Design);
+                        Console.WriteLine($"{No} Group successfully created");
                         break;
                     case (int)Categories.System_Administration:
+                        No=teachingServices.CreateGroup(Categories.System_Administration);
+                        Console.WriteLine($"{No} Group successfully created");
                         break;
                     default:
                         Console.WriteLine("No such Category");
@@ -43,7 +48,10 @@ namespace My_Console_Application.Services
                 Console.WriteLine("Please choose correct no");
                 goto tryagain;
             }
-            teachingServices.CheckIsOnline();
+            Categories categories = new Categories();
+            teachingServices.CreateGroup(categories);
+            //teachingServices.CheckIsOnline();
+
         }
 
         public static void EditGroupsMenu()
@@ -70,12 +78,15 @@ namespace My_Console_Application.Services
 
         public static void ListOfAllStudentsMenu()
         {
+            Console.WriteLine("Please enter the Group no");
+
+
 
         }
 
         public static void ListofGroupsMenu()
         {
-
+            teachingServices.ListOfGroups();
         }
 
         public static void CreateStudentMenu()

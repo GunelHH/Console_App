@@ -48,10 +48,10 @@ namespace My_Console_Application.Models
         //    }
         //}
 
-        //public override string ToString()
-        //{
-        //    return $"Fullname: {FullName} Group no:{ GroupNo}";
-        //}
+        public override string ToString()
+        {
+            return $"Fullname: {Fullname} Group no:{ GroupNo}";
+        }
 
     }
 }

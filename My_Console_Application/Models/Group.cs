@@ -12,8 +12,8 @@ namespace My_Console_Application.Models
         public bool isOnline;
         public int Limit;
         public List<Student> Students;
-        public static int count=100;
-        public Group(Categories category,bool isonline)
+        public static int count=1;
+        public Group(Categories category)
         {
             switch (category)
             {
@@ -31,7 +31,6 @@ namespace My_Console_Application.Models
             }
             count++;
             Category = category;
-            isOnline = isonline;
             if (isOnline)
             {
                 Limit = 15;

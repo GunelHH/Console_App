@@ -33,6 +33,9 @@ namespace My_Console_Application
                         case 1:
                             MenuServices.CreateGroupMenu();
                             break;
+                        case 2:
+                            MenuServices.ListofGroupsMenu();
+                            break;
                         case 3:
                             MenuServices.EditGroupsMenu();
                             break;
@@ -92,27 +95,7 @@ namespace My_Console_Application
             //        default:
             //            break;
             //    }
-
-
-
-
-
-            //    string StrSelection = Console.ReadLine();
-            //    bool Result = int.TryParse(StrSelection, out selection);
-
-            //    if (Result)
-            //    {
-            //        switch (selection)
-            //        {
-            //            case 1:
-            //                TeachingServices.CreateGroup();
-            //            default:
-            //                break;
-            //        }
-            //    }
             } while (true);
-        //    //TeachingServices teaching = new TeachingServices();
-        //    //teaching.CreateGroup(Enums.Categories.Design);
         }
     }
 }

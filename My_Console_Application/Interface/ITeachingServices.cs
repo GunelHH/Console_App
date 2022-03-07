@@ -17,8 +17,8 @@ namespace My_Console_Application.Interface
 
         public void ListofStudentsInGroup(string no);
 
-        public void ListOfAllStudents();
+        public void ListOfAllStudents(string no);
 
-        public void CreateStudent();
+        public void CreateStudent(string fullname, string groupno, bool isonline);
     }
 }
