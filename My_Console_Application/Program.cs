@@ -19,7 +19,8 @@ namespace My_Console_Application
                 Console.WriteLine("3. Edit Groups");
                 Console.WriteLine("4. List of Students in Group");
                 Console.WriteLine("5. List of All Students");
-                Console.WriteLine("6. Create Student\n");
+                Console.WriteLine("6. Create Student");
+                Console.WriteLine("0. Exit\n");
 
                 string strselection = Console.ReadLine();
 
@@ -42,6 +43,11 @@ namespace My_Console_Application
                         case 4:
                             MenuServices.ListofStudentsInGroupMenu();
                             break;
+                        case 5:
+                            break;
+                        case 6:
+                            MenuServices.CreateStudentMenu();
+                            break;
 
                            
 
@@ -51,51 +57,7 @@ namespace My_Console_Application
                     }
                 }
 
-
-            //    TeachingServices teaching = new TeachingServices();
-            //tryagain:
-            //    Console.WriteLine("Please choose no: ");
-
-
-
-            //    teaching.CreateGroup( Enums.Categories.Programming);
-
-            //    string choise = Console.ReadLine();
-
-            //    switch (choise)
-            //    {
-            //        case "1":
-            //            Console.WriteLine("No : ");
-            //            string no = Console.ReadLine();
-            //            bool online;
-            //            int Limit;
-            //            Console.WriteLine("Is online(y/n) : ");
-            //            string isonline = Console.ReadLine();
-            //        tryagain:
-            //            if (isonline == "y")
-            //            {
-            //                online = true;
-            //                Limit = 15;
-            //            }
-            //            else if (isonline == "n")
-            //            {
-            //                online = false;
-            //                Limit = 10;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Duzgun deyer daxil edin !");
-            //                goto tryagain;
-            //            }
-            //            Console.WriteLine("Limit : ");
-
-
-            //            break;
-            //        case "2":
-            //        default:
-            //            break;
-            //    }
-            } while (true);
+            } while (selection!=0);
         }
     }
 }

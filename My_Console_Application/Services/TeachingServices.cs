@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using My_Console_Application.Enums;
 using My_Console_Application.Interface;
 using My_Console_Application.Models;
@@ -8,113 +9,12 @@ namespace My_Console_Application.Services
 {
     class TeachingServices : ITeachingServices
     {
-
-        //public void ListofStudentsInGroup(string no)
-        //{
-        //    Group group = FindGroup(no);
-        //    if (group == null)
-        //    {
-        //        Console.WriteLine("Please choose valid Group no");
-        //        return;
-        //    }
-        //    if (group.No != no)
-        //    {
-        //        Console.WriteLine("There is no such Group");
-        //        return;
-        //    }
-        //    foreach (Group student1 in Groups)
-        //    {
-        //        Console.WriteLine(student1.Students);
-        //    }
-
-        //}
-
-        //public void ListOfAllStudents(Group group)
-        //{
-        //    if (group.Students.Count == 0)
-        //    {
-        //        Console.WriteLine("There is no student yet");
-        //        return;
-        //    }
-        //    foreach (Student stu in group.Students)
-        //    {
-        //        Console.WriteLine(stu);
-        //    }
-        //}
-
-        //public void CreateStudent(string fullname, string groupno, bool type, Group group)
-        //{
-        //    if (string.IsNullOrEmpty(fullname))
-        //    {
-        //        Console.WriteLine("Please enter correctly");
-        //        return;
-        //    }
-        //    foreach (char item in fullname)
-        //    {
-        //        if (char.IsDigit(item))
-        //        {
-        //            Console.WriteLine("Please enter correctly");
-        //            return;
-        //        }
-        //    }
-
-        //    Student students = new Student(fullname, groupno);
-        //    students.GetFullName(fullname);
-        //    //group.Students.Add(students);
-
-        //    Group group1 = FindGroup(groupno);
-        //    if (group1 == null)
-        //    {
-        //        Console.WriteLine("Please enter correctly");
-        //        return;
-        //    }
-        //    if (group1.No.Trim().ToLower() == groupno.ToLower().Trim())
-        //    {
-
-        //    }
-
-        //    //group = Groups.Find(x => x.No.Trim().ToUpper() == groupno.Trim().ToUpper());
-
-        //    group.Students.Add(students);
-        //    Console.ForegroundColor = ConsoleColor.Cyan;
-        //    Console.WriteLine("Student successfully created ");
-
-        //}
-
+       
         private List<Group> _groups = new List<Group>();
 
         public List<Group> Groups => _groups;
 
-        public bool CheckIsOnline()
-        {
-            bool result = false;
-            Console.WriteLine("Please choose type of education\n1.Online\n2.Offline");
-            int num;
-            string numStr = Console.ReadLine();
-            bool strnum = int.TryParse(numStr, out num);
-            if (strnum)
-            {
-                switch (num)
-                {
-                    case 1:
-                        result = true;
-                        break;
-                    case 2:
-                        result = false;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Please choose correct no");
-            }
-            return result;
-        } 
-
         public Group FindGroup(string no)
-
 
         {
             foreach (Group group in _groups)
@@ -128,46 +28,72 @@ namespace My_Console_Application.Services
             return null;
         }
 
-        public void EditGroups(string no,string newno)
+        public string FindNewGroupNo(Group group)
+        {
+            StringBuilder str = new StringBuilder();
+            str.Append(group.No[0]);
+            str.Append(group.No[1]);
+            return str.ToString();
+        }
+
+        public void EditGroups(string no)
         {
             Group group1 = FindGroup(no);
             if (group1 == null)
             {
                 Console.WriteLine("Please choose correct Group no ");
                 return;
-
             }
+        tryagain:
+            string newno = Console.ReadLine();
+            if (string.IsNullOrEmpty(newno))
+            {
+                Console.WriteLine("Please choose correct value");
+                goto tryagain;
+            }
+            foreach (char item in newno)
+            {
+                if (!char.IsDigit(item))
+                {
+                    Console.WriteLine("Please choose digit");
+                    goto tryagain;
+                }
+            }
+            string newletter = FindNewGroupNo(group1);
+            newletter += newno;
             foreach (Group group in Groups)
             {
-                if (group.No.ToLower().Trim() == newno.Trim().ToLower())
+                if (group.No.ToLower().Trim() == newletter.ToLower().Trim())
                 {
-                    Console.WriteLine($"The Group no {newno} is already exist");
+                    Console.WriteLine($"The Group no {newletter} is already exist");
                     return;
                 }
             }
+
             group1.No = newno;
-            Console.WriteLine($"{no} group successfully changed to {newno} ");
+            Console.WriteLine($"{no} group successfully changed to {newletter} ");
         }
 
         public void ListOfAllStudents(string no)
         {
             Group group = FindGroup(no);
-            if (group==null)
+            if (group == null)
             {
                 Console.WriteLine("Please choose correct no");
                 return;
             }
             Console.WriteLine(group.Students);
         }
+
         public void ListofStudentsInGroup(string no)
         {
             Group group = FindGroup(no);
-            if (group==null)
+            if (group == null)
             {
                 Console.WriteLine("Please enter correct no");
                 return;
             }
-            if (group.No!=no)
+            if (group.No != no)
             {
                 Console.WriteLine("There is no such group");
             }
@@ -176,7 +102,7 @@ namespace My_Console_Application.Services
 
         public void ListOfGroups()
         {
-            if (_groups.Count==0)
+            if (_groups.Count == 0)
             {
                 Console.WriteLine("No yet Group");
                 return;
@@ -187,45 +113,121 @@ namespace My_Console_Application.Services
             }
         }
 
-        public string CreateGroup(Categories category)
+        public void CreateGroup(Categories category)
         {
-            Group group = new Group(category);
+            Console.WriteLine("Please choose type of education\n1.Online\n2.Offline");
+            bool result = false;
+            int num;
+            string numStr;
+            bool Resultnum;
+        tryagain:
+            numStr = Console.ReadLine();
+            Resultnum = int.TryParse(numStr, out num);
+            if (num == 1 || num == 2)
+            {
+                switch (num)
+                {
+                    case 1:
+                        result = true;
+                        break;
+                    case 2:
+                        result = false;
+                        break;
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please choose correct value");
+                goto tryagain;
+            }
+
+
+
+            Group group = new Group(category, result);
             _groups.Add(group);
-            return group.No;
+            Console.WriteLine(group.No + "-Group created");
 
         }
 
-        public void CreateStudent(string fullname,string groupno,bool isonline)
+        public void CreateStudent()
         {
+            Student student = new Student(GetFullName());
+            //Console.WriteLine("Student successfully created");
+            //Group group = null;
+            //if (group == null)
+            //{
+            //    Console.WriteLine("There is no student yet");
+            //    return;
+            //}
+            //group.Students.Add(student);
+            //if (_groups.Count == 0)
+            //{
+            //    Console.WriteLine("There is no Group yet ");
+            //    return;
+            //}
+            //if (group.No.ToLower().Trim() != groupno.Trim().ToLower())
+            //{
+            //    Console.WriteLine("There is no such Group ");
+            //    return;
+            //}
+
+
+        }
+
+        public string GetFullName()
+        {
+            Console.WriteLine("Please enter Full Name");
+        tryagain:
+            string fullname = Console.ReadLine();
             if (string.IsNullOrEmpty(fullname))
             {
                 Console.WriteLine("Please enter correctly");
-                return;
+                goto tryagain;
             }
-            Student student = new Student(fullname,groupno);
-            student.GetFullName(fullname);
-            Group group = null;
-            if (group==null)
+            if (!fullname.Trim().Contains(' '))
             {
-                Console.WriteLine("There is no student yet");
-                return;
+                Console.WriteLine("Please enter correctly");
+                goto tryagain;
             }
-            group.Students.Add(student);
-            if (_groups.Count==0)
+            fullname = fullname.Trim();
+            string[] arr = fullname.Split(' ');
+            if (arr.Length != 2)
             {
-                Console.WriteLine("There is no Group yet ");
-                return;
+                Console.WriteLine("Please enter correctly");
+                goto tryagain;
             }
-            if (group.No.ToLower().Trim()!=groupno.Trim().ToLower())
-            {
-                Console.WriteLine("There is no such Group ");
-                return;
-            }
-            if (group.No.ToLower().Trim() == groupno.Trim().ToLower())
-            {
-                group.Students.Add();
-            }
+            StringBuilder strbuild = new StringBuilder();
+            StringBuilder strbuild1 = new StringBuilder();
+            string str = arr[0];
+            strbuild.Append(char.ToUpper(str[0]));
+            string str1 = arr[1];
+            strbuild1.Append(char.ToUpper(str1[0]));
 
+            for (int i = 1; i < str.Length; i++)
+            {
+                if (!char.IsLetter(str[i]))
+                {
+                    Console.WriteLine("Please enter correctly");
+                    goto tryagain;
+                }
+                strbuild.Append(char.ToLower(str[i]));
+            }
+            for (int i = 1; i < str1.Length; i++)
+            {
+
+                if (!char.IsLetter(str1[i]))
+                {
+                    Console.WriteLine("Please enter correctly");
+                    goto tryagain;
+                }
+                strbuild1.Append(char.ToLower(str1[i]));
+            }
+            arr[0] = strbuild.ToString();
+            arr[1] = strbuild1.ToString();
+            fullname = String.Join(" ",arr);
+            return fullname;
         }
-    }
+
+    }     
 }

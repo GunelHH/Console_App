@@ -1,25 +1,21 @@
 ﻿<Properties StartupConfiguration="{B7A0C7CF-C5FA-4EB4-85CB-7D4A4DE3FA1A}|Default">
   <MonoDevelop.Ide.ItemProperties.My__Console__Application PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Teaching.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Interface/ITeachingServices.cs" Line="11" Column="1" />
-      <File FileName="Services/MenuServices.cs" Line="1" Column="1" />
-      <File FileName="Models/Group.cs" Line="14" Column="28" />
-      <File FileName="Models/Students.cs" Line="4" Column="18" />
-      <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="Services/Teaching.cs" Line="10" Column="37" />
+      <File FileName="Interface/ITeachingServices.cs" Line="12" Column="54" />
+      <File FileName="Services/MenuServices.cs" />
+      <File FileName="Program.cs" Line="30" Column="18" />
+      <File FileName="Models/Group.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="My_Console_Application" expanded="True">
             <Node name="My_Console_Application" expanded="True">
-              <Node name="Enums" expanded="True" />
               <Node name="Interface" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Teaching.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

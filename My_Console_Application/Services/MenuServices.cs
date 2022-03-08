@@ -8,49 +8,41 @@ namespace My_Console_Application.Services
     {
         public static TeachingServices teachingServices = new TeachingServices();
 
+
         public static void CreateGroupMenu()
         {
-
             Console.WriteLine("Please choose Category");
-
+            int num;
+            string Strnum;
+            bool Resultnum;
             tryagain:
-           
+
             foreach (Categories category in System.Enum.GetValues(typeof(Categories)))
             {
                 Console.WriteLine($"{(int)category}. {category}");
             }
-            int num;
-            string Strnum = Console.ReadLine();
-            bool Resultnum = int.TryParse(Strnum, out num);
-            if (Resultnum)
+            Strnum = Console.ReadLine();
+            Resultnum = int.TryParse(Strnum, out num);
+            if (num==1 || num==2 || num==3)
             {
                 switch (num)
                 {  
                     case (int)Categories.Programming:
-                        string No=teachingServices.CreateGroup(Categories.Programming);
-                        Console.WriteLine($"{No} Group successfully created");
+                        teachingServices.CreateGroup(Categories.Programming);
                         break;
                     case (int)Categories.Design:
-                        No=teachingServices.CreateGroup(Categories.Design);
-                        Console.WriteLine($"{No} Group successfully created");
+                        teachingServices.CreateGroup(Categories.Design);;
                         break;
                     case (int)Categories.System_Administration:
-                        No=teachingServices.CreateGroup(Categories.System_Administration);
-                        Console.WriteLine($"{No} Group successfully created");
+                        teachingServices.CreateGroup(Categories.System_Administration);
                         break;
-                    default:
-                        Console.WriteLine("No such Category");
-                        return;
                 }
             }
             else
             {
-                Console.WriteLine("Please choose correct no");
+                Console.WriteLine("Please choose correct Category");
                 goto tryagain;
             }
-            Categories categories = new Categories();
-            teachingServices.CreateGroup(categories);
-            //teachingServices.CheckIsOnline();
 
         }
 
@@ -60,11 +52,10 @@ namespace My_Console_Application.Services
 
             string no = Console.ReadLine();
 
-            Console.WriteLine("Please ehter the New no");
+            Console.WriteLine("Please enter the digits of New no");
+            
 
-            string newno = Console.ReadLine();
-
-            teachingServices.EditGroups(no,newno);
+            teachingServices.EditGroups(no);
         }
 
         public static void ListofStudentsInGroupMenu()
@@ -91,58 +82,7 @@ namespace My_Console_Application.Services
 
         public static void CreateStudentMenu()
         {
-
+            teachingServices.CreateStudent();
         }
-
-
-
-
-
-
-
-
-
-
-       //public static CreateGroupMenu()
-       // {
-
-        //     Console.WriteLine("Please choose Category");
-        //     foreach (Categories categories in Enum.GetValues(typeof(Categories)))
-        //     {
-        //         Console.WriteLine($"categ");
-        //     }
-
-        //     if (Resultisonline)
-        //     {
-        //         Group group;
-        //         group.isOnline = true;
-        //     }
-
-        //     if (Resultisonline)
-        //     {
-        //         Console.WriteLine("Please choose Category");
-        //         foreach (Categories cat in System.Enum.GetValues(typeof(Categories)))
-        //         {
-        //             Console.WriteLine($"{(int)cat}. {cat}");
-        //         }
-        //     }
-        //     int category;
-        //     string Strcategory = Console.ReadLine();
-        //     bool Resulcategory = int.TryParse(Strcategory, out category);
-        //     if (Resulcategory)
-        //     {
-        //         switch (category)
-        //         {
-        //             case (int)Categories.Programming:
-
-
-        //             default:
-        //                 break;
-        //         }
-        //     }
-
-        //     TeachingServices teachingServices = new TeachingServices();
-        //     teachingServices.CreateGroup();
-        // }
     }
 }
