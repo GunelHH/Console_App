@@ -27,7 +27,7 @@ namespace My_Console_Application
 
                 bool ResultSelection = int.TryParse(strselection, out selection);
 
-                if (ResultSelection)
+                if (ResultSelection)    
                 {
                     switch (selection)
                     {

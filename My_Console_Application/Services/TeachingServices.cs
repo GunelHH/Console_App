@@ -21,7 +21,7 @@ namespace My_Console_Application.Services
         public Group FindGroup(string no)
 
         {
-            foreach (Group group in _groups)
+            foreach (Group group in Groups)
             {
 
                 if (group.No.ToLower().Trim() == no.Trim().ToLower())
@@ -83,10 +83,7 @@ namespace My_Console_Application.Services
             foreach (var student in _students)
             {
                 Console.WriteLine(student);
-                //if (student.no)
-                //{
-
-                //}
+               
             }
 
         }
@@ -94,6 +91,26 @@ namespace My_Console_Application.Services
         public void ListofStudentsInGroup(string no)
         {
             Group group = FindGroup(no);
+            if (string.IsNullOrWhiteSpace(no))
+            {
+                Console.WriteLine("Please enter correctly");
+                return;
+            }
+            if (group.Students.Count == 0)
+            {
+                Console.WriteLine("There is no student yet");
+                return;
+            }
+            string type = "";
+            if(group.isOnline == true)
+            {
+                type = "online";
+            }
+            else
+            {
+                type = "offline";
+            }
+           
             if (group == null)
             {
                 Console.WriteLine("Please enter correct no");
@@ -104,12 +121,15 @@ namespace My_Console_Application.Services
                 Console.WriteLine("There is no such group");
                 return;
             }
-            Console.WriteLine(group.Students);
+            foreach (Student student in group.Students)
+            {
+                Console.WriteLine($"{student} ,Type :{type}");
+            }
         }
 
         public void ListOfGroups()
         {
-            if (_groups.Count == 0)
+            if (Groups.Count == 0)
             {
                 Console.WriteLine("No yet Group");
                 return;
@@ -123,50 +143,41 @@ namespace My_Console_Application.Services
         public void CreateGroup(Categories category)
         {
             Group group = new Group(category, CheckIsOnline());
-            _groups.Add(group);
-            Console.WriteLine(group.No + "-Group created");
-
-        }
-
-        public void CreateStudent()
-        {
-            Console.WriteLine("Please choose Group no");
-            string groupno = Console.ReadLine();
-            foreach (Group item in _groups)
+            if (group.isOnline)
             {
-                if (item.No.ToLower().Trim() != groupno.ToLower().Trim())
-                {
-                    Console.WriteLine("Please choose correctly");
-                    return;
-                }
-            }
-
-            Group group = Groups.Find(x => x.No.Trim().ToUpper() == groupno.Trim().ToUpper());        
-            group.Students = new List<Student>();
-            Console.WriteLine("Please enter entrance score");
-            bool res;
-            int warranty;
-            string Strwarranty = Console.ReadLine();
-            bool Resultwarranty = int.TryParse(Strwarranty, out warranty);
-            if (warranty>100)
-            {
-                Console.WriteLine("Please enter a number not greater than hundred");
-                return;
-
-            }
-            if (warranty >= 50 && warranty <= 100)
-            {
-                res = true;
+                group.Limit = 15;
             }
             else
             {
-                res = false;
+                group.Limit = 10;
             }
-            Student student = new Student(GetFullName(),res,groupno);
-            group.Students.Add(student);
-            _students.Add(student);
-            Console.WriteLine("Student successfully created");
+            Groups.Add(group);
+            Console.WriteLine(group.No + "-Group created");
+        }
 
+        public void CreateStudent(bool type)
+        {
+            Console.WriteLine("Please choose Group no");
+            string groupno = Console.ReadLine();
+            
+            Student student = new Student(GetFullName(), type, groupno);
+            Group group = Groups.Find(x => x.No.Trim().ToUpper() == groupno.Trim().ToUpper());
+            if(group is null)
+            {
+                Console.WriteLine("Group not found");
+                return;
+            }
+            if (group.Students.Count<group.Limit)
+            {
+                group.Students.Add(student);
+                students.Add(student);
+                Console.WriteLine("Student successfully created");
+            }
+            else
+            {
+                Console.WriteLine("Group is Full");
+                return;
+            }
             
         }
         public bool CheckIsOnline()
@@ -185,6 +196,7 @@ namespace My_Console_Application.Services
                 {
                     case 1:
                         result = true;
+                        
                         break;
                     case 2:
                         result = false;

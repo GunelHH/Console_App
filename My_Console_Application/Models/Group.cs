@@ -17,6 +17,7 @@ namespace My_Console_Application.Models
 
         public Group(Categories category,bool isonline)
         {
+            Students = new List<Student>();
             switch (category)
             {
                 case Categories.Programming:
@@ -34,20 +35,11 @@ namespace My_Console_Application.Models
             count++;
             Category = category;
             isOnline = isonline;
-            if (isOnline)
-            {
-                Limit = 15;
-            }
-            else
-            {
-                Limit = 10;
-            }
-
         }
         public override string ToString()
         {
             string status = isOnline ? "Online" : "Offline";
-            return $"No: {No} ,Category: {Category},Status: {status}";
+            return $"No: {No} ,Category: {Category},Status: {status} ";
         }
         
 

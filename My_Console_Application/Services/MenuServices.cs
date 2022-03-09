@@ -78,8 +78,32 @@ namespace My_Console_Application.Services
         }
 
         public static void CreateStudentMenu()
-        {
-            teachingServices.CreateStudent();
+        { bool type = false;
+            Console.WriteLine("Please enter: \n1. Warranty\n 2.Not Warranty");
+            int warranty;
+            string Strwarranty = Console.ReadLine();
+            bool Resultwarranty = int.TryParse(Strwarranty, out warranty);
+            if (Resultwarranty)
+            {
+                switch (warranty)
+                {
+                    case 1:
+                        type = true;
+                        break;
+                    case 2:
+                        type = false;
+                        break;
+                    default:
+                        Console.WriteLine("Please choose valid no");
+                        return;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter the digit");
+                return;
+            }
+            teachingServices.CreateStudent(type);
         }
     }
 }

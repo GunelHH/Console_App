@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using My_Console_Application.Interface;
+using My_Console_Application.Services;
 
 namespace My_Console_Application.Models
 {
@@ -8,18 +10,17 @@ namespace My_Console_Application.Models
         public string Fullname;
         public string GroupNo;
         public bool Type;
-       
-     
-
+        
+      
         public Student(string fullname,bool type,string gruopno)
         {
             Fullname = fullname;
             Type = type;
             GroupNo = gruopno;
-           
         }
         public override string ToString()
         {
+            
             string status = Type ? "warranty" : "not warranty";
             return $"Fullname: {Fullname} Group no:{ GroupNo} Status:{status}";
         }

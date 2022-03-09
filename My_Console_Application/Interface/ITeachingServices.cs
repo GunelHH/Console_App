@@ -22,6 +22,6 @@ namespace My_Console_Application.Interface
 
         public void ListOfAllStudents();
 
-        public void CreateStudent();
+        public void CreateStudent(bool type);
     }
 }
