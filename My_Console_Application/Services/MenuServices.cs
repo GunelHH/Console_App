@@ -69,10 +69,7 @@ namespace My_Console_Application.Services
 
         public static void ListOfAllStudentsMenu()
         {
-            Console.WriteLine("Please enter the Group no");
-
-
-
+            teachingServices.ListOfAllStudents();
         }
 
         public static void ListofGroupsMenu()

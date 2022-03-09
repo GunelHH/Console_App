@@ -14,6 +14,10 @@ namespace My_Console_Application.Services
 
         public List<Group> Groups => _groups;
 
+        private List<Student> _students = new List<Student>();
+
+        public List<Student> students => _students;
+
         public Group FindGroup(string no)
 
         {
@@ -66,7 +70,7 @@ namespace My_Console_Application.Services
                 if (group.No.ToLower().Trim() == newletter.ToLower().Trim())
                 {
                     Console.WriteLine($"The Group no {newletter} is already exist");
-                    return;
+                    goto tryagain;
                 }
             }
 
@@ -74,15 +78,17 @@ namespace My_Console_Application.Services
             Console.WriteLine($"{no} group successfully changed to {newletter} ");
         }
 
-        public void ListOfAllStudents(string no)
+        public void ListOfAllStudents()
         {
-            Group group = FindGroup(no);
-            if (group == null)
+            foreach (var student in _students)
             {
-                Console.WriteLine("Please choose correct no");
-                return;
+                Console.WriteLine(student);
+                //if (student.no)
+                //{
+
+                //}
             }
-            Console.WriteLine(group.Students);
+
         }
 
         public void ListofStudentsInGroup(string no)
@@ -93,9 +99,10 @@ namespace My_Console_Application.Services
                 Console.WriteLine("Please enter correct no");
                 return;
             }
-            if (group.No != no)
+            if (group.No.ToLower().Trim()!=no.ToLower().Trim())
             {
                 Console.WriteLine("There is no such group");
+                return;
             }
             Console.WriteLine(group.Students);
         }
@@ -115,6 +122,55 @@ namespace My_Console_Application.Services
 
         public void CreateGroup(Categories category)
         {
+            Group group = new Group(category, CheckIsOnline());
+            _groups.Add(group);
+            Console.WriteLine(group.No + "-Group created");
+
+        }
+
+        public void CreateStudent()
+        {
+            Console.WriteLine("Please choose Group no");
+            string groupno = Console.ReadLine();
+            foreach (Group item in _groups)
+            {
+                if (item.No.ToLower().Trim() != groupno.ToLower().Trim())
+                {
+                    Console.WriteLine("Please choose correctly");
+                    return;
+                }
+            }
+
+            Group group = Groups.Find(x => x.No.Trim().ToUpper() == groupno.Trim().ToUpper());        
+            group.Students = new List<Student>();
+            Console.WriteLine("Please enter entrance score");
+            bool res;
+            int warranty;
+            string Strwarranty = Console.ReadLine();
+            bool Resultwarranty = int.TryParse(Strwarranty, out warranty);
+            if (warranty>100)
+            {
+                Console.WriteLine("Please enter a number not greater than hundred");
+                return;
+
+            }
+            if (warranty >= 50 && warranty <= 100)
+            {
+                res = true;
+            }
+            else
+            {
+                res = false;
+            }
+            Student student = new Student(GetFullName(),res,groupno);
+            group.Students.Add(student);
+            _students.Add(student);
+            Console.WriteLine("Student successfully created");
+
+            
+        }
+        public bool CheckIsOnline()
+        {
             Console.WriteLine("Please choose type of education\n1.Online\n2.Offline");
             bool result = false;
             int num;
@@ -133,7 +189,6 @@ namespace My_Console_Application.Services
                     case 2:
                         result = false;
                         break;
-
                 }
             }
             else
@@ -141,38 +196,26 @@ namespace My_Console_Application.Services
                 Console.WriteLine("Please choose correct value");
                 goto tryagain;
             }
-
-
-
-            Group group = new Group(category, result);
-            _groups.Add(group);
-            Console.WriteLine(group.No + "-Group created");
-
+            return result;
         }
 
-        public void CreateStudent()
+        public bool CheckWarranty()
         {
-            Student student = new Student(GetFullName());
-            //Console.WriteLine("Student successfully created");
-            //Group group = null;
-            //if (group == null)
-            //{
-            //    Console.WriteLine("There is no student yet");
-            //    return;
-            //}
-            //group.Students.Add(student);
-            //if (_groups.Count == 0)
-            //{
-            //    Console.WriteLine("There is no Group yet ");
-            //    return;
-            //}
-            //if (group.No.ToLower().Trim() != groupno.Trim().ToLower())
-            //{
-            //    Console.WriteLine("There is no such Group ");
-            //    return;
-            //}
+            Console.WriteLine("Please enter entrance score");
+            bool res;
+            int warranty;
+            string Strwarranty = Console.ReadLine();
+            bool Resultwarranty = int.TryParse(Strwarranty, out warranty);
 
-
+            if (warranty >= 50 && warranty <= 100)
+            {
+                res = true;
+            }
+            else
+            {
+                res = false;
+            }
+            return res;
         }
 
         public string GetFullName()
@@ -203,6 +246,7 @@ namespace My_Console_Application.Services
             strbuild.Append(char.ToUpper(str[0]));
             string str1 = arr[1];
             strbuild1.Append(char.ToUpper(str1[0]));
+            
 
             for (int i = 1; i < str.Length; i++)
             {
@@ -225,7 +269,7 @@ namespace My_Console_Application.Services
             }
             arr[0] = strbuild.ToString();
             arr[1] = strbuild1.ToString();
-            fullname = String.Join(" ",arr);
+            fullname = String.Join(' ',arr);
             return fullname;
         }
 

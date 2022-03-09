@@ -9,6 +9,9 @@ namespace My_Console_Application.Interface
     {
         public List<Group> Groups { get; }
 
+        public List<Student> students { get; }
+        
+
         public void CreateGroup(Categories category);
 
         public void ListOfGroups();
@@ -17,7 +20,7 @@ namespace My_Console_Application.Interface
 
         public void ListofStudentsInGroup(string no);
 
-        public void ListOfAllStudents(string no);
+        public void ListOfAllStudents();
 
         public void CreateStudent();
     }

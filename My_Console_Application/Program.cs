@@ -8,7 +8,7 @@ namespace My_Console_Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("==>  Course Management Application  <==");
+            Console.WriteLine("==> COURCE MANAGEMENT APPLICATION  <==");
             Console.WriteLine("\nPlease choose Transaction no:");
             int selection;
             do
@@ -44,6 +44,7 @@ namespace My_Console_Application
                             MenuServices.ListofStudentsInGroupMenu();
                             break;
                         case 5:
+                            MenuServices.ListOfAllStudentsMenu();
                             break;
                         case 6:
                             MenuServices.CreateStudentMenu();

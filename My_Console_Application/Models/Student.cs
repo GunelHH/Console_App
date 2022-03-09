@@ -11,16 +11,17 @@ namespace My_Console_Application.Models
        
      
 
-        public Student(string fullname)
+        public Student(string fullname,bool type,string gruopno)
         {
             Fullname = fullname;
-            //GroupNo = groupno;
-            Type = false;
+            Type = type;
+            GroupNo = gruopno;
            
         }
         public override string ToString()
         {
-            return $"Fullname: {Fullname} Group no:{ GroupNo}";
+            string status = Type ? "warranty" : "not warranty";
+            return $"Fullname: {Fullname} Group no:{ GroupNo} Status:{status}";
         }
 
     }
