@@ -49,9 +49,6 @@ namespace My_Console_Application
                         case 6:
                             MenuServices.CreateStudentMenu();
                             break;
-
-                           
-
                         default:
                             Console.WriteLine("Please choose valid no 😊");
                             break;

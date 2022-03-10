@@ -10,21 +10,20 @@ namespace My_Console_Application.Services
 
 
         public static void CreateGroupMenu()
-        {
+        { 
             Console.WriteLine("Please choose Category");
             int num;
-            string Strnum;
-            bool Resultnum;
-            tryagain:
-
+        tryagain:
             foreach (Categories category in System.Enum.GetValues(typeof(Categories)))
             {
                 Console.WriteLine($"{(int)category}. {category}");
             }
-            Strnum = Console.ReadLine();
-            Resultnum = int.TryParse(Strnum, out num);
+            string Strnum = Console.ReadLine();
+            bool Resultnum = int.TryParse(Strnum, out num);
             if (num==1 || num==2 || num==3)
             {
+               
+               
                 switch (num)
                 {  
                     case (int)Categories.Programming:
@@ -51,8 +50,6 @@ namespace My_Console_Application.Services
             Console.WriteLine("Please enter the Group no that you want to rename");
 
             string no = Console.ReadLine();
-
-            Console.WriteLine("Please enter the digits of New no");
             
 
             teachingServices.EditGroups(no);
@@ -61,7 +58,7 @@ namespace My_Console_Application.Services
         public static void ListofStudentsInGroupMenu()
         {
             Console.WriteLine("Please enter the Group no:");
-
+           
             string no = Console.ReadLine();
 
             teachingServices.ListofStudentsInGroup(no);
@@ -79,7 +76,8 @@ namespace My_Console_Application.Services
 
         public static void CreateStudentMenu()
         { bool type = false;
-            Console.WriteLine("Please enter: \n1. Warranty\n 2.Not Warranty");
+        tryagain:
+            Console.WriteLine("Please enter: \n1. Warranty\n2.Not Warranty");
             int warranty;
             string Strwarranty = Console.ReadLine();
             bool Resultwarranty = int.TryParse(Strwarranty, out warranty);
@@ -95,13 +93,13 @@ namespace My_Console_Application.Services
                         break;
                     default:
                         Console.WriteLine("Please choose valid no");
-                        return;
+                        goto tryagain;
                 }
             }
             else
             {
                 Console.WriteLine("Please enter the digit");
-                return;
+                goto tryagain;
             }
             teachingServices.CreateStudent(type);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using My_Console_Application.Enums;
+using My_Console_Application.Services;
 
 namespace My_Console_Application.Models
 {
@@ -14,20 +15,19 @@ namespace My_Console_Application.Models
         public List<Student> Students;
         public static int count=1;
 
-
         public Group(Categories category,bool isonline)
         {
             Students = new List<Student>();
             switch (category)
             {
                 case Categories.Programming:
-                    No = $"PM{count}";
+                    No = $"PM-{count}";
                     break;
                 case Categories.Design:
-                    No = $"DS{count}";
+                    No = $"DS-{count}";
                     break;
                 case Categories.System_Administration:
-                    No = $"SA{count}";
+                    No = $"SA-{count}";
                     break;
                 default:
                     break;
